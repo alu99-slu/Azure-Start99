@@ -1,0 +1,12 @@
+replicaCount: 1
+
+image:
+  repository: <ACR_NAME>.azurecr.io/azure-start
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+
+resources: {}

@@ -1,0 +1,1110 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Azure Starter//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Azure Cloud Engineer 84-day Plan
+X-WR-TIMEZONE:Asia/Kolkata
+BEGIN:VTIMEZONE
+TZID:Asia/Kolkata
+X-LIC-LOCATION:Asia/Kolkata
+BEGIN:STANDARD
+TZOFFSETFROM:+0530
+TZOFFSETTO:+0530
+TZNAME:IST
+DTSTART:19700101T000000
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:day-01-azure-starter@local
+DTSTAMP:20260201T000000Z
+DTSTART;TZID=Asia/Kolkata:20260202T083000
+DTEND;TZID=Asia/Kolkata:20260202T103000
+SUMMARY:Day 1 — Linux basics
+DESCRIPTION:Goal: Linux basics, shell commands, permissions.\nAction: create files, chmod/chown, write a bash script.\nDeliverable: scripts/sysinfo.sh
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-02-azure-starter@local
+DTSTAMP:20260201T000001Z
+DTSTART;TZID=Asia/Kolkata:20260203T083000
+DTEND;TZID=Asia/Kolkata:20260203T103000
+SUMMARY:Day 2 — Git fundamentals
+DESCRIPTION:Goal: git basics. Action: git init/clone/commit/push. Deliverable: repo with README and scripts.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-03-azure-starter@local
+DTSTAMP:20260201T000002Z
+DTSTART;TZID=Asia/Kolkata:20260204T083000
+DTEND;TZID=Asia/Kolkata:20260204T103000
+SUMMARY:Day 3 — Networking fundamentals
+DESCRIPTION:TCP/UDP, DNS, HTTP basics; use curl and dig; deliverable: notes.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-04-azure-starter@local
+DTSTAMP:20260201T000003Z
+DTSTART;TZID=Asia/Kolkata:20260205T083000
+DTEND;TZID=Asia/Kolkata:20260205T103000
+SUMMARY:Day 4 — Azure Portal basics
+DESCRIPTION:Explore Azure Portal, resource groups, subscriptions. Deliverable: screenshot/notes.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-05-azure-starter@local
+DTSTAMP:20260201T000004Z
+DTSTART;TZID=Asia/Kolkata:20260206T083000
+DTEND;TZID=Asia/Kolkata:20260206T103000
+SUMMARY:Day 5 — Azure core concepts & AZ-900 intro
+DESCRIPTION:Start Microsoft Learn AZ-900 modules. Deliverable: summary notes.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-06-azure-starter@local
+DTSTAMP:20260201T000005Z
+DTSTART;TZID=Asia/Kolkata:20260207T083000
+DTEND;TZID=Asia/Kolkata:20260207T103000
+SUMMARY:Day 6 — Continue AZ-900 modules
+DESCRIPTION:Finish AZ-900 modules and quizzes. Deliverable: notes.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-07-azure-starter@local
+DTSTAMP:20260201T000006Z
+DTSTART;TZID=Asia/Kolkata:20260208T083000
+DTEND;TZID=Asia/Kolkata:20260208T103000
+SUMMARY:Day 7 — Static website hosting (Storage)
+DESCRIPTION:Host static site with Azure Storage. Deliverable: public URL.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-08-azure-starter@local
+DTSTAMP:20260201T000007Z
+DTSTART;TZID=Asia/Kolkata:20260209T083000
+DTEND;TZID=Asia/Kolkata:20260209T103000
+SUMMARY:Day 8 — Virtual Machines basics
+DESCRIPTION:Provision a Linux VM and SSH. Deliverable: VM IP and SSH screenshot.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-09-azure-starter@local
+DTSTAMP:20260201T000008Z
+DTSTART;TZID=Asia/Kolkata:20260210T083000
+DTEND;TZID=Asia/Kolkata:20260210T103000
+SUMMARY:Day 9 — VM networking & NSGs
+DESCRIPTION:NSGs, public/private IPs. Action: add NSG rules and test. Deliverable: NSG rules & tests.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-10-azure-starter@local
+DTSTAMP:20260201T000009Z
+DTSTART;TZID=Asia/Kolkata:20260211T083000
+DTEND;TZID=Asia/Kolkata:20260211T103000
+SUMMARY:Day 10 — Azure Storage deep dive
+DESCRIPTION:Blobs, file shares, tiers, lifecycle. Deliverable: blob URL & lifecycle policy screenshot.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-11-azure-starter@local
+DTSTAMP:20260201T000010Z
+DTSTART;TZID=Asia/Kolkata:20260212T083000
+DTEND;TZID=Asia/Kolkata:20260212T103000
+SUMMARY:Day 11 — Managed disks & snapshots
+DESCRIPTION:Snapshot a VM disk and document restore steps. Deliverable: snapshot_steps.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-12-azure-starter@local
+DTSTAMP:20260201T000011Z
+DTSTART;TZID=Asia/Kolkata:20260213T083000
+DTEND;TZID=Asia/Kolkata:20260213T103000
+SUMMARY:Day 12 — Marketplace & managed images
+DESCRIPTION:Deploy from marketplace and inspect configuration. Deliverable: notes.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-13-azure-starter@local
+DTSTAMP:20260201T000012Z
+DTSTART;TZID=Asia/Kolkata:20260214T083000
+DTEND;TZID=Asia/Kolkata:20260214T103000
+SUMMARY:Day 13 — Simple web app on VM (Nginx)
+DESCRIPTION:Deploy Nginx and serve a demo Flask app. Deliverable: URL or screenshot.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-14-azure-starter@local
+DTSTAMP:20260201T000013Z
+DTSTART;TZID=Asia/Kolkata:20260215T083000
+DTEND;TZID=Asia/Kolkata:20260215T103000
+SUMMARY:Day 14 — Weekly review & docs
+DESCRIPTION:Document week results and push to repo. Deliverable: week1.md and README update.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-15-azure-starter@local
+DTSTAMP:20260201T000014Z
+DTSTART;TZID=Asia/Kolkata:20260216T083000
+DTEND;TZID=Asia/Kolkata:20260216T103000
+SUMMARY:Day 15 — Azure AD basics
+DESCRIPTION:Tenants, users, groups. Deliverable: aad_basics.md with screenshots.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-16-azure-starter@local
+DTSTAMP:20260201T000015Z
+DTSTART;TZID=Asia/Kolkata:20260217T083000
+DTEND;TZID=Asia/Kolkata:20260217T103000
+SUMMARY:Day 16 — RBAC & roles
+DESCRIPTION:Assign roles at different scopes and verify. Deliverable: rbacs.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-17-azure-starter@local
+DTSTAMP:20260201T000016Z
+DTSTART;TZID=Asia/Kolkata:20260218T083000
+DTEND;TZID=Asia/Kolkata:20260218T103000
+SUMMARY:Day 17 — Service principals & app registrations
+DESCRIPTION:Create SP and authenticate with az CLI. Deliverable: sp_readme.md (no secrets).
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-18-azure-starter@local
+DTSTAMP:20260201T000017Z
+DTSTART;TZID=Asia/Kolkata:20260219T083000
+DTEND;TZID=Asia/Kolkata:20260219T103000
+SUMMARY:Day 18 — Managed identities
+DESCRIPTION:Attach MI to resource and access Key Vault. Deliverable: managed_identity_demo.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-19-azure-starter@local
+DTSTAMP:20260201T000018Z
+DTSTART;TZID=Asia/Kolkata:20260220T083000
+DTEND;TZID=Asia/Kolkata:20260220T103000
+SUMMARY:Day 19 — Secure practices (least privilege)
+DESCRIPTION:Audit role assignments and apply least privilege. Deliverable: security_practice.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-20-azure-starter@local
+DTSTAMP:20260201T000019Z
+DTSTART;TZID=Asia/Kolkata:20260221T083000
+DTEND;TZID=Asia/Kolkata:20260221T103000
+SUMMARY:Day 20 — Multi-factor & conditional access intro
+DESCRIPTION:Enable MFA for a test user and document. Deliverable: mfa_notes.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-21-azure-starter@local
+DTSTAMP:20260201T000020Z
+DTSTART;TZID=Asia/Kolkata:20260222T083000
+DTEND;TZID=Asia/Kolkata:20260222T103000
+SUMMARY:Day 21 — Week review & small IAM project
+DESCRIPTION:Create SP+RBAC demo script. Deliverable: iam_demo.sh + README.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-22-azure-starter@local
+DTSTAMP:20260201T000021Z
+DTSTART;TZID=Asia/Kolkata:20260223T083000
+DTEND;TZID=Asia/Kolkata:20260223T103000
+SUMMARY:Day 22 — VNets & subnets
+DESCRIPTION:Create VNet with public/private subnets. Deliverable: vnet_diagram.png.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-23-azure-starter@local
+DTSTAMP:20260201T000022Z
+DTSTART;TZID=Asia/Kolkata:20260224T083000
+DTEND;TZID=Asia/Kolkata:20260224T103000
+SUMMARY:Day 23 — Route tables & UDRs
+DESCRIPTION:Add UDR and verify traffic path. Deliverable: routing_test.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-24-azure-starter@local
+DTSTAMP:20260201T000023Z
+DTSTART;TZID=Asia/Kolkata:20260225T083000
+DTEND;TZID=Asia/Kolkata:20260225T103000
+SUMMARY:Day 24 — VNet peering & service endpoints
+DESCRIPTION:Peer VNets and test connectivity. Deliverable: peering_steps.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-25-azure-starter@local
+DTSTAMP:20260201T000024Z
+DTSTART;TZID=Asia/Kolkata:20260226T083000
+DTEND;TZID=Asia/Kolkata:20260226T103000
+SUMMARY:Day 25 — Load Balancer vs Application Gateway
+DESCRIPTION:Deploy LB or App Gateway and health probe. Deliverable: lb_setup.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-26-azure-starter@local
+DTSTAMP:20260201T000025Z
+DTSTART;TZID=Asia/Kolkata:20260227T083000
+DTEND;TZID=Asia/Kolkata:20260227T103000
+SUMMARY:Day 26 — Azure DNS & Private DNS zones
+DESCRIPTION:Create private DNS and link to VNet. Deliverable: dns_setup.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-27-azure-starter@local
+DTSTAMP:20260201T000026Z
+DTSTART;TZID=Asia/Kolkata:20260228T083000
+DTEND;TZID=Asia/Kolkata:20260228T103000
+SUMMARY:Day 27 — VPN / ExpressRoute overview
+DESCRIPTION:Design hybrid connectivity options. Deliverable: hybrid_design.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-28-azure-starter@local
+DTSTAMP:20260201T000027Z
+DTSTART;TZID=Asia/Kolkata:20260301T083000
+DTEND;TZID=Asia/Kolkata:20260301T103000
+SUMMARY:Day 28 — Network hardened demo
+DESCRIPTION:Deploy VNet, NSGs, LB, private DNS; document. Deliverable: network_hardening.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-29-azure-starter@local
+DTSTAMP:20260201T000028Z
+DTSTART;TZID=Asia/Kolkata:20260302T083000
+DTEND;TZID=Asia/Kolkata:20260302T103000
+SUMMARY:Day 29 — Azure SQL basics
+DESCRIPTION:Provision Azure SQL and connect. Deliverable: sql_notes.md (no password).
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-30-azure-starter@local
+DTSTAMP:20260201T000029Z
+DTSTART;TZID=Asia/Kolkata:20260303T083000
+DTEND;TZID=Asia/Kolkata:20260303T103000
+SUMMARY:Day 30 — Cosmos DB overview
+DESCRIPTION:Create Cosmos DB and run queries. Deliverable: cosmos_demo.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-31-azure-starter@local
+DTSTAMP:20260201T000030Z
+DTSTART;TZID=Asia/Kolkata:20260304T083000
+DTEND;TZID=Asia/Kolkata:20260304T103000
+SUMMARY:Day 31 — Azure Cache for Redis
+DESCRIPTION:Provision Redis and test caching. Deliverable: redis_script.py and results.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-32-azure-starter@local
+DTSTAMP:20260201T000031Z
+DTSTART;TZID=Asia/Kolkata:20260305T083000
+DTEND;TZID=Asia/Kolkata:20260305T103000
+SUMMARY:Day 32 — Storage for DBs & backups
+DESCRIPTION:Test automated backups and point-in-time restore. Deliverable: backup_restore.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-33-azure-starter@local
+DTSTAMP:20260201T000032Z
+DTSTART;TZID=Asia/Kolkata:20260306T083000
+DTEND;TZID=Asia/Kolkata:20260306T103000
+SUMMARY:Day 33 — Messaging: Service Bus/Event Grid
+DESCRIPTION:Build producer/consumer using Service Bus or Queue. Deliverable: sb_demo.py.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-34-azure-starter@local
+DTSTAMP:20260201T000033Z
+DTSTART;TZID=Asia/Kolkata:20260307T083000
+DTEND;TZID=Asia/Kolkata:20260307T103000
+SUMMARY:Day 34 — Serverless: Azure Functions
+DESCRIPTION:Create HTTP-trigger Function and test. Deliverable: function URL.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-35-azure-starter@local
+DTSTAMP:20260201T000034Z
+DTSTART;TZID=Asia/Kolkata:20260308T083000
+DTEND;TZID=Asia/Kolkata:20260308T103000
+SUMMARY:Day 35 — Week review & integrated demo
+DESCRIPTION:Integrate app with DB + Redis and push demo. Deliverable: integrated_demo/README.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-36-azure-starter@local
+DTSTAMP:20260201T000035Z
+DTSTART;TZID=Asia/Kolkata:20260309T083000
+DTEND;TZID=Asia/Kolkata:20260309T103000
+SUMMARY:Day 36 — IaC concepts (ARM vs Terraform)
+DESCRIPTION:Learn Terraform basics and run a simple plan. Deliverable: iac_comparison.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-37-azure-starter@local
+DTSTAMP:20260201T000036Z
+DTSTART;TZID=Asia/Kolkata:20260310T083000
+DTEND;TZID=Asia/Kolkata:20260310T103000
+SUMMARY:Day 37 — Install Terraform + AzureRM
+DESCRIPTION:Configure Terraform provider and run terraform apply. Deliverable: terraform basic apply.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-38-azure-starter@local
+DTSTAMP:20260201T000037Z
+DTSTART;TZID=Asia/Kolkata:20260311T083000
+DTEND;TZID=Asia/Kolkata:20260311T103000
+SUMMARY:Day 38 — Terraform modules basics
+DESCRIPTION:Create a reusable module for VNet. Deliverable: modules/vnet/ in repo.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-39-azure-starter@local
+DTSTAMP:20260201T000038Z
+DTSTART;TZID=Asia/Kolkata:20260312T083000
+DTEND;TZID=Asia/Kolkata:20260312T103000
+SUMMARY:Day 39 — Terraform for VM & storage
+DESCRIPTION:Provision network, VM & storage via Terraform. Deliverable: terraform files.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-40-azure-starter@local
+DTSTAMP:20260201T000039Z
+DTSTART;TZID=Asia/Kolkata:20260313T083000
+DTEND;TZID=Asia/Kolkata:20260313T103000
+SUMMARY:Day 40 — Terraform remote backend (Azure Storage)
+DESCRIPTION:Configure remote backend and state locking. Deliverable: backend.tf.example & instructions.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-41-azure-starter@local
+DTSTAMP:20260201T000040Z
+DTSTART;TZID=Asia/Kolkata:20260314T083000
+DTEND;TZID=Asia/Kolkata:20260314T103000
+SUMMARY:Day 41 — Terraform best practices
+DESCRIPTION:Workspaces, variables, secrets handling. Deliverable: terraform/best-practices.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-42-azure-starter@local
+DTSTAMP:20260201T000041Z
+DTSTART;TZID=Asia/Kolkata:20260315T083000
+DTEND;TZID=Asia/Kolkata:20260315T103000
+SUMMARY:Day 42 — Convert manual infra to Terraform
+DESCRIPTION:Recreate earlier infra with Terraform and test destroy. Deliverable: terraform/complete stack.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-43-azure-starter@local
+DTSTAMP:20260201T000042Z
+DTSTART;TZID=Asia/Kolkata:20260316T083000
+DTEND;TZID=Asia/Kolkata:20260316T103000
+SUMMARY:Day 43 — Docker basics
+DESCRIPTION:Build and run Docker image of Flask app. Deliverable: Dockerfile + run instructions.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-44-azure-starter@local
+DTSTAMP:20260201T000043Z
+DTSTART;TZID=Asia/Kolkata:20260317T083000
+DTEND;TZID=Asia/Kolkata:20260317T103000
+SUMMARY:Day 44 — Multi-stage builds & optimization
+DESCRIPTION:Use multi-stage Dockerfile to reduce image size. Deliverable: optimized Dockerfile.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-45-azure-starter@local
+DTSTAMP:20260201T000044Z
+DTSTART;TZID=Asia/Kolkata:20260318T083000
+DTEND;TZID=Asia/Kolkata:20260318T103000
+SUMMARY:Day 45 — Azure Container Registry (ACR)
+DESCRIPTION:Create ACR and push your image. Deliverable: ACR image URL.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-46-azure-starter@local
+DTSTAMP:20260201T000045Z
+DTSTART;TZID=Asia/Kolkata:20260319T083000
+DTEND;TZID=Asia/Kolkata:20260319T103000
+SUMMARY:Day 46 — Azure Container Instances (ACI)
+DESCRIPTION:Run container in ACI and test. Deliverable: ACI endpoint/logs.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-47-azure-starter@local
+DTSTAMP:20260201T000046Z
+DTSTART;TZID=Asia/Kolkata:20260320T083000
+DTEND;TZID=Asia/Kolkata:20260320T103000
+SUMMARY:Day 47 — Container networking & secrets
+DESCRIPTION:Use Key Vault/env vars for secrets; demonstrate injection. Deliverable: secret_injection.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-48-azure-starter@local
+DTSTAMP:20260201T000047Z
+DTSTART;TZID=Asia/Kolkata:20260321T083000
+DTEND;TZID=Asia/Kolkata:20260321T103000
+SUMMARY:Day 48 — Container orchestration overview
+DESCRIPTION:Compare ACI vs AKS vs App Service. Deliverable: orchestration_comparison.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-49-azure-starter@local
+DTSTAMP:20260201T000048Z
+DTSTART;TZID=Asia/Kolkata:20260322T083000
+DTEND;TZID=Asia/Kolkata:20260322T103000
+SUMMARY:Day 49 — Container repo & CI
+DESCRIPTION:GitHub Actions to build and push to ACR. Deliverable: CI workflow file.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-50-azure-starter@local
+DTSTAMP:20260201T000049Z
+DTSTART;TZID=Asia/Kolkata:20260323T083000
+DTEND;TZID=Asia/Kolkata:20260323T103000
+SUMMARY:Day 50 — Kubernetes core concepts
+DESCRIPTION:Pods, deployments, services. Deliverable: k8s manifests & kubectl outputs.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-51-azure-starter@local
+DTSTAMP:20260201T000050Z
+DTSTART;TZID=Asia/Kolkata:20260324T083000
+DTEND;TZID=Asia/Kolkata:20260324T103000
+SUMMARY:Day 51 — AKS cluster creation
+DESCRIPTION:Create AKS cluster and get credentials. Deliverable: aks_info.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-52-azure-starter@local
+DTSTAMP:20260201T000051Z
+DTSTART;TZID=Asia/Kolkata:20260325T083000
+DTEND;TZID=Asia/Kolkata:20260325T103000
+SUMMARY:Day 52 — Services and Ingress on AKS
+DESCRIPTION:Expose app via LoadBalancer/Ingress. Deliverable: ingress.yaml and endpoint.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-53-azure-starter@local
+DTSTAMP:20260201T000052Z
+DTSTART;TZID=Asia/Kolkata:20260326T083000
+DTEND;TZID=Asia/Kolkata:20260326T103000
+SUMMARY:Day 53 — Helm package manager
+DESCRIPTION:Package and deploy with Helm. Deliverable: helm chart and install output.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-54-azure-starter@local
+DTSTAMP:20260201T000053Z
+DTSTART;TZID=Asia/Kolkata:20260327T083000
+DTEND;TZID=Asia/Kolkata:20260327T103000
+SUMMARY:Day 54 — cert-manager & TLS
+DESCRIPTION:Install cert-manager and configure certificates. Deliverable: cert manifests or explanation.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-55-azure-starter@local
+DTSTAMP:20260201T000054Z
+DTSTART;TZID=Asia/Kolkata:20260328T083000
+DTEND;TZID=Asia/Kolkata:20260328T103000
+SUMMARY:Day 55 — Autoscaling & resource limits
+DESCRIPTION:Configure HPA and resource requests/limits. Deliverable: hpa_test.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-56-azure-starter@local
+DTSTAMP:20260201T000055Z
+DTSTART;TZID=Asia/Kolkata:20260329T083000
+DTEND;TZID=Asia/Kolkata:20260329T103000
+SUMMARY:Day 56 — AKS hardening notes
+DESCRIPTION:Namespaces, RBAC, network policies. Deliverable: aks_hardening.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-57-azure-starter@local
+DTSTAMP:20260201T000056Z
+DTSTART;TZID=Asia/Kolkata:20260330T083000
+DTEND;TZID=Asia/Kolkata:20260330T103000
+SUMMARY:Day 57 — CI/CD concepts
+DESCRIPTION:Pipeline stages and artifact promotion. Deliverable: pipeline_design.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-58-azure-starter@local
+DTSTAMP:20260201T000057Z
+DTSTART;TZID=Asia/Kolkata:20260331T083000
+DTEND;TZID=Asia/Kolkata:20260331T103000
+SUMMARY:Day 58 — GitHub Actions basics
+DESCRIPTION:Workflow to build Docker and push to ACR. Deliverable: .github/workflows/build-acr.yml.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-59-azure-starter@local
+DTSTAMP:20260201T000058Z
+DTSTART;TZID=Asia/Kolkata:20260401T083000
+DTEND;TZID=Asia/Kolkata:20260401T103000
+SUMMARY:Day 59 — CD to AKS (GitHub Actions / GitOps)
+DESCRIPTION:Trigger deployments to AKS on image updates. Deliverable: cd_workflow.yml or GitOps config.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-60-azure-starter@local
+DTSTAMP:20260201T000059Z
+DTSTART;TZID=Asia/Kolkata:20260402T083000
+DTEND;TZID=Asia/Kolkata:20260402T103000
+SUMMARY:Day 60 — IaC pipeline for Terraform
+DESCRIPTION:CI job to run terraform fmt/validate/plan. Deliverable: terraform-ci.yml.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-61-azure-starter@local
+DTSTAMP:20260201T000060Z
+DTSTART;TZID=Asia/Kolkata:20260403T083000
+DTEND;TZID=Asia/Kolkata:20260403T103000
+SUMMARY:Day 61 — Secrets in CI
+DESCRIPTION:Use GitHub Secrets and/or OIDC to access Azure without stored secrets. Deliverable: secrets.md with OIDC setup.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-62-azure-starter@local
+DTSTAMP:20260201T000061Z
+DTSTART;TZID=Asia/Kolkata:20260404T083000
+DTEND;TZID=Asia/Kolkata:20260404T103000
+SUMMARY:Day 62 — Unit/integration tests in CI
+DESCRIPTION:Add pytest and run tests in CI. Deliverable: tests/ and passing CI.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-63-azure-starter@local
+DTSTAMP:20260201T000062Z
+DTSTART;TZID=Asia/Kolkata:20260405T083000
+DTEND;TZID=Asia/Kolkata:20260405T103000
+SUMMARY:Day 63 — Full pipeline run
+DESCRIPTION:Verify commit -> build -> push -> deploy flow. Deliverable: pipeline_run.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-64-azure-starter@local
+DTSTAMP:20260201T000063Z
+DTSTART;TZID=Asia/Kolkata:20260406T083000
+DTEND;TZID=Asia/Kolkata:20260406T103000
+SUMMARY:Day 64 — Azure Monitor & Log Analytics
+DESCRIPTION:Create workspace and query logs. Deliverable: sample KQL query.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-65-azure-starter@local
+DTSTAMP:20260201T000064Z
+DTSTART;TZID=Asia/Kolkata:20260407T083000
+DTEND;TZID=Asia/Kolkata:20260407T103000
+SUMMARY:Day 65 — Application Insights
+DESCRIPTION:Instrument your app to send traces and metrics. Deliverable: telemetry screenshots.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-66-azure-starter@local
+DTSTAMP:20260201T000065Z
+DTSTART;TZID=Asia/Kolkata:20260408T083000
+DTEND;TZID=Asia/Kolkata:20260408T103000
+SUMMARY:Day 66 — AKS monitoring
+DESCRIPTION:Enable Azure Monitor for containers on AKS. Deliverable: monitoring dashboard screenshots.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-67-azure-starter@local
+DTSTAMP:20260201T000066Z
+DTSTART;TZID=Asia/Kolkata:20260409T083000
+DTEND;TZID=Asia/Kolkata:20260409T103000
+SUMMARY:Day 67 — Prometheus & Grafana (optional)
+DESCRIPTION:Deploy Prometheus & Grafana on AKS and create dashboard. Deliverable: grafana_dashboard.json.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-68-azure-starter@local
+DTSTAMP:20260201T000067Z
+DTSTART;TZID=Asia/Kolkata:20260410T083000
+DTEND;TZID=Asia/Kolkata:20260410T103000
+SUMMARY:Day 68 — Centralized logging (OpenSearch / Log Analytics)
+DESCRIPTION:Aggregate logs centrally and plan retention. Deliverable: logging_architecture.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-69-azure-starter@local
+DTSTAMP:20260201T000068Z
+DTSTART;TZID=Asia/Kolkata:20260411T083000
+DTEND;TZID=Asia/Kolkata:20260411T103000
+SUMMARY:Day 69 — Alerts & runbooks
+DESCRIPTION:Create alerts and link runbooks for remediation. Deliverable: runbook.md and alert config.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-70-azure-starter@local
+DTSTAMP:20260201T000069Z
+DTSTART;TZID=Asia/Kolkata:20260412T083000
+DTEND;TZID=Asia/Kolkata:20260412T103000
+SUMMARY:Day 70 — Observability checklist
+DESCRIPTION:Document required metrics, logs, traces, SLI/SLA and alert thresholds. Deliverable: observability_checklist.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-71-azure-starter@local
+DTSTAMP:20260201T000070Z
+DTSTART;TZID=Asia/Kolkata:20260413T083000
+DTEND;TZID=Asia/Kolkata:20260413T103000
+SUMMARY:Day 71 — Azure Key Vault deep dive
+DESCRIPTION:Store secrets and access them with managed identity. Deliverable: keyvault_demo.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-72-azure-starter@local
+DTSTAMP:20260201T000071Z
+DTSTART;TZID=Asia/Kolkata:20260414T083000
+DTEND;TZID=Asia/Kolkata:20260414T103000
+SUMMARY:Day 72 — Azure Policy & Blueprints
+DESCRIPTION:Enforce tagging and allowed SKUs. Deliverable: policy_examples.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-73-azure-starter@local
+DTSTAMP:20260201T000072Z
+DTSTART;TZID=Asia/Kolkata:20260415T083000
+DTEND;TZID=Asia/Kolkata:20260415T103000
+SUMMARY:Day 73 — Security Center / Defender basics
+DESCRIPTION:Review recommendations and remediate a finding. Deliverable: security_center_findings.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-74-azure-starter@local
+DTSTAMP:20260201T000073Z
+DTSTART;TZID=Asia/Kolkata:20260416T083000
+DTEND;TZID=Asia/Kolkata:20260416T103000
+SUMMARY:Day 74 — Network security & WAF
+DESCRIPTION:Enable WAF on Application Gateway and test a rule. Deliverable: waf_test.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-75-azure-starter@local
+DTSTAMP:20260201T000074Z
+DTSTART;TZID=Asia/Kolkata:20260417T083000
+DTEND;TZID=Asia/Kolkata:20260417T103000
+SUMMARY:Day 75 — Secrets lifecycle & rotation
+DESCRIPTION:Automate secret rotation and verify app picks it up. Deliverable: secret_rotation_playbook.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-76-azure-starter@local
+DTSTAMP:20260201T000075Z
+DTSTART;TZID=Asia/Kolkata:20260418T083000
+DTEND;TZID=Asia/Kolkata:20260418T103000
+SUMMARY:Day 76 — Identity protection & logs
+DESCRIPTION:Monitor sign-ins and set alerts for suspicious activity. Deliverable: identity_monitoring.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-77-azure-starter@local
+DTSTAMP:20260201T000076Z
+DTSTART;TZID=Asia/Kolkata:20260419T083000
+DTEND;TZID=Asia/Kolkata:20260419T103000
+SUMMARY:Day 77 — Security hardening tasks
+DESCRIPTION:Apply policies and Key Vault integrations; run checklist. Deliverable: security_checklist_completed.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-78-azure-starter@local
+DTSTAMP:20260201T000077Z
+DTSTART;TZID=Asia/Kolkata:20260420T083000
+DTEND;TZID=Asia/Kolkata:20260420T103000
+SUMMARY:Day 78 — High availability & disaster recovery
+DESCRIPTION:Design multi-AZ and test backup/restore. Deliverable: dr_runbook.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-79-azure-starter@local
+DTSTAMP:20260201T000078Z
+DTSTART;TZID=Asia/Kolkata:20260421T083000
+DTEND;TZID=Asia/Kolkata:20260421T103000
+SUMMARY:Day 79 — Autoscaling & performance tuning
+DESCRIPTION:Tune HPA/VMSS and benchmark under load. Deliverable: autoscale_results.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-80-azure-starter@local
+DTSTAMP:20260201T000079Z
+DTSTART;TZID=Asia/Kolkata:20260422T083000
+DTEND;TZID=Asia/Kolkata:20260422T103000
+SUMMARY:Day 80 — Cost management & optimization
+DESCRIPTION:Use Azure Cost Management to find savings and set budgets. Deliverable: cost_optimization.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-81-azure-starter@local
+DTSTAMP:20260201T000080Z
+DTSTART;TZID=Asia/Kolkata:20260423T083000
+DTEND;TZID=Asia/Kolkata:20260423T103000
+SUMMARY:Day 81 — Final project kickoff — plan
+DESCRIPTION:Create project README and architecture diagram. Deliverable: final_project/README.md.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-82-azure-starter@local
+DTSTAMP:20260201T000081Z
+DTSTART;TZID=Asia/Kolkata:20260424T083000
+DTEND;TZID=Asia/Kolkata:20260424T103000
+SUMMARY:Day 82 — Implement infra IaC & CI
+DESCRIPTION:Implement Terraform modules and CI for plan. Deliverable: terraform/modules and CI workflow.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-83-azure-starter@local
+DTSTAMP:20260201T000082Z
+DTSTART;TZID=Asia/Kolkata:20260425T083000
+DTEND;TZID=Asia/Kolkata:20260425T103000
+SUMMARY:Day 83 — Deploy app to AKS with secrets & monitoring
+DESCRIPTION:Deploy with Key Vault secrets and App Insights instrumentation. Deliverable: live endpoint + telemetry.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day-84-azure-starter@local
+DTSTAMP:20260201T000083Z
+DTSTART;TZID=Asia/Kolkata:20260426T083000
+DTEND;TZID=Asia/Kolkata:20260426T103000
+SUMMARY:Day 84 — Finalize, test, interview prep
+DESCRIPTION:Run chaos tests, backup/restore, finalize resume bullets and portfolio. Deliverable: final README, runbooks, architecture summary.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:Time for today's Azure learning task!
+END:VALARM
+END:VEVENT
+END:VCALENDAR

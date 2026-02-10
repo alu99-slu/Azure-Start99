@@ -1,0 +1,6 @@
+apiVersion: v2
+name: azure-start
+description: Helm chart stub for the Azure Cloud Start sample app
+type: application
+version: 0.1.0
+appVersion: "0.1"
