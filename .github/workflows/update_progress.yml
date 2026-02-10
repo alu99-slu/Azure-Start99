@@ -1,15 +1,12 @@
 ---
-name: GitHub CLI Automation (No Azure)
+name: GitHub CLI Automation
 
 on:
   schedule:
-    - cron: "0 3 * * *" # Daily at 8:30 AM IST (3:00 AM UTC)
-
+    - cron: '0 3 * * *'
   workflow_dispatch:
-
   issues:
     types: [opened, closed, labeled]
-
   push:
     branches:
       - main
@@ -29,11 +26,14 @@ jobs:
 
       - name: Count Completed Tasks
         id: count
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
-          TOTAL=$(gh issue list --label "day-task" --state all --limit 1000 --json number | jq '. | length')
-          CLOSED=$(gh issue list --label "day-task" --state closed --limit 1000 --json number | jq '. | length')
+          TOTAL=$(gh issue list --label "day-task" \
+            --state all --limit 1000 --json number | \
+            jq '. | length')
+
+          CLOSED=$(gh issue list --label "day-task" \
+            --state closed --limit 1000 --json number | \
+            jq '. | length')
 
           if [ "$TOTAL" -gt 0 ]; then
             PERCENT=$((CLOSED * 100 / TOTAL))
@@ -41,14 +41,37 @@ jobs:
             PERCENT=0
           fi
 
-          echo "total=$TOTAL" >> "$GITHUB_OUTPUT"
-          echo "closed=$CLOSED" >> "$GITHUB_OUTPUT"
-          echo "percent=$PERCENT" >> "$GITHUB_OUTPUT"
+          echo "total=$TOTAL" >> $GITHUB_OUTPUT
+          echo "closed=$CLOSED" >> $GITHUB_OUTPUT
+          echo "percent=$PERCENT" >> $GITHUB_OUTPUT
+
+          echo "Progress: $CLOSED/$TOTAL ($PERCENT%)"
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Update README
         run: |
-          sed -i "s|!\[Progress\](.*)|![Progress](https://img.shields.io/badge/Progress-${{ steps.count.outputs.percent }}%25-blue)|" README.md || true
-          sed -i "s/Completed: [0-9]*\/[0-9]*/Completed: ${{ steps.count.outputs.closed }}\/${{ steps.count.outputs.total }}/" README.md || true
+          PERCENT=${{ steps.count.outputs.percent }}
+          CLOSED=${{ steps.count.outputs.closed }}
+          TOTAL=${{ steps.count.outputs.total }}
+
+          if [ "$PERCENT" -lt 25 ]; then
+            COLOR="red"
+          elif [ "$PERCENT" -lt 50 ]; then
+            COLOR="orange"
+          elif [ "$PERCENT" -lt 75 ]; then
+            COLOR="yellow"
+          elif [ "$PERCENT" -lt 100 ]; then
+            COLOR="blue"
+          else
+            COLOR="green"
+          fi
+
+          BADGE="https://img.shields.io/badge/Progress-${PERCENT}%25-${COLOR}"
+          sed -i "s|!\[Progress\](https://img.shields.io.*)|![Progress](${BADGE})|" README.md || true
+
+          PROGRESS="**Progress:** ${CLOSED}/${TOTAL} tasks completed (${PERCENT}%)"
+          sed -i "s|\*\*Progress:\*\*.*|\*\*Progress:\*\* ${CLOSED}/${TOTAL} tasks completed (${PERCENT}%)|" README.md || true
 
       - name: Commit Changes
         run: |
@@ -59,12 +82,15 @@ jobs:
             echo "No changes to commit"
           else
             git add README.md
-            git commit -m "Update progress: ${{ steps.count.outputs.closed }}/${{ steps.count.outputs.total }}"
+            CLOSED=${{ steps.count.outputs.closed }}
+            TOTAL=${{ steps.count.outputs.total }}
+            PERCENT=${{ steps.count.outputs.percent }}
+            git commit -m "Update progress: ${CLOSED}/${TOTAL} (${PERCENT}%)"
             git push
           fi
 
-  weekly-summary:
-    name: Weekly Progress Summary
+  daily-reminder:
+    name: Post Daily Task Reminder
     runs-on: ubuntu-latest
     if: github.event_name == 'schedule'
 
@@ -72,34 +98,221 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Generate Weekly Report
+      - name: Find Today's Task
+        id: find-task
+        run: |
+          START_DATE="2026-02-10"
+          TODAY=$(date +%Y-%m-%d)
+
+          DAYS=$(( ($(date -d "$TODAY" +%s) - $(date -d "$START_DATE" +%s)) / 86400 + 1 ))
+
+          if [ $DAYS -lt 1 ] || [ $DAYS -gt 84 ]; then
+            echo "Not in learning period"
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "day=$DAYS" >> $GITHUB_OUTPUT
+            echo "skip=false" >> $GITHUB_OUTPUT
+
+            ISSUE_NUMBER=$(gh issue list --label "day-task" \
+              --search "Day $DAYS" --json number \
+              --jq '.[0].number')
+            echo "issue=$ISSUE_NUMBER" >> $GITHUB_OUTPUT
+          fi
         env:
           GH_TOKEN: ${{ github.token }}
+
+      - name: Post Reminder Comment
+        if: |
+          steps.find-task.outputs.skip != 'true' &&
+          steps.find-task.outputs.issue != ''
         run: |
-          WEEK_START=$(date -d "7 days ago" +%Y-%m-%d)
-          WEEK_END=$(date +%Y-%m-%d)
-          WEEK_NUM=$(date +%U)
+          DAY=${{ steps.find-task.outputs.day }}
+          ISSUE=${{ steps.find-task.outputs.issue }}
+          MSG="🌅 Good morning! Time to tackle Day ${DAY}'s task."
+          MSG="${MSG} You've got this! 💪"
+          gh issue comment $ISSUE --body "$MSG"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+  weekly-summary:
+    name: Weekly Progress Summary
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'schedule' &&
+      github.event.schedule == '0 3 * * 1'
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Generate Weekly Report
+        run: |
+          WEEK_AGO=$(date -d '7 days ago' +%Y-%m-%d)
 
           CLOSED_THIS_WEEK=$(gh issue list \
             --label "day-task" \
             --state closed \
-            --search "closed:>=$WEEK_START" \
-            --json number \
+            --search "closed:>=$WEEK_AGO" \
+            --json number,title,closedAt \
             --jq 'length')
+
+          WEEK_START=$(date -d '7 days ago' +%Y-%m-%d)
+          WEEK_END=$(date +%Y-%m-%d)
+          WEEK_NUM=$(date +%U)
+
+          cat > /tmp/summary.md << 'EOFMARKER'
+          ## Weekly Progress Report
+
+          **Week of:** WEEK_START to WEEK_END
+
+          **Tasks Completed:** TASKS_COMPLETED
+
+          **Keep up the great work!** 🚀
+
+          ---
+          *This is an automated weekly summary*
+          EOFMARKER
+
+          sed -i "s/WEEK_START/${WEEK_START}/g" /tmp/summary.md
+          sed -i "s/WEEK_END/${WEEK_END}/g" /tmp/summary.md
+          sed -i "s/TASKS_COMPLETED/${CLOSED_THIS_WEEK}/g" /tmp/summary.md
 
           gh issue create \
             --title "📊 Week ${WEEK_NUM} Summary" \
             --label "summary" \
-            --body "$(cat <<EOF
-## Weekly Progress Report
+            --body-file /tmp/summary.md
+        env:
+          GH_TOKEN: ${{ github.token }}
 
-**Week of:** ${WEEK_START} to ${WEEK_END}
+  auto-label:
+    name: Auto-label New Issues
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issues' && github.event.action == 'opened'
 
-**Tasks Completed:** ${CLOSED_THIS_WEEK}
+    steps:
+      - name: Add Labels
+        run: |
+          ISSUE_TITLE="${{ github.event.issue.title }}"
+          ISSUE_NUMBER="${{ github.event.issue.number }}"
 
-Keep up the great work! 🚀
+          if [[ "$ISSUE_TITLE" =~ ^Day\ [0-9]+ ]]; then
+            gh issue edit $ISSUE_NUMBER --add-label "day-task"
+            echo "Added 'day-task' label"
+          fi
 
----
-This is an automated weekly summary.
-EOF
-)"
+          ISSUE_BODY="${{ github.event.issue.body }}"
+
+          if [[ "$ISSUE_BODY" =~ "3 hours" ]] || \
+             [[ "$ISSUE_BODY" =~ "3-4 hours" ]]; then
+            gh issue edit $ISSUE_NUMBER --add-label "advanced"
+          elif [[ "$ISSUE_BODY" =~ "2 hours" ]] || \
+               [[ "$ISSUE_BODY" =~ "2-3 hours" ]]; then
+            gh issue edit $ISSUE_NUMBER --add-label "intermediate"
+          else
+            gh issue edit $ISSUE_NUMBER --add-label "beginner"
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+  celebrate-milestones:
+    name: Celebrate Progress Milestones
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issues' && github.event.action == 'closed'
+
+    steps:
+      - name: Check Milestone
+        run: |
+          CLOSED=$(gh issue list --label "day-task" \
+            --state closed --json number | jq '. | length')
+
+          MESSAGE=""
+
+          case $CLOSED in
+            1)
+              MESSAGE="🎯 **First Day Complete!** You've started!"
+              ;;
+            7)
+              MESSAGE="🎉 **Week 1 Complete!** Great start!"
+              ;;
+            21)
+              MESSAGE="🌟 **3 Weeks Done!** 25% through!"
+              ;;
+            42)
+              MESSAGE="🚀 **Halfway There!** 50% complete!"
+              ;;
+            63)
+              MESSAGE="💪 **75% Complete!** Almost there!"
+              ;;
+            84)
+              MESSAGE="🏆 **CONGRATULATIONS!** All 84 days!"
+              MESSAGE="${MESSAGE} You're now an Azure Cloud Engineer! 🎊"
+              ;;
+          esac
+
+          if [ ! -z "$MESSAGE" ]; then
+            gh issue create \
+              --title "🎊 Milestone: Day $CLOSED Achieved!" \
+              --label "milestone" \
+              --body "$MESSAGE"
+
+            echo "Milestone reached: $CLOSED days!"
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+  stats-report:
+    name: Update Learning Statistics
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Generate Stats
+        run: |
+          mkdir -p .github/stats
+
+          TOTAL=$(gh issue list --label "day-task" \
+            --state all --limit 1000 --json number | \
+            jq '. | length')
+          CLOSED=$(gh issue list --label "day-task" \
+            --state closed --limit 1000 --json number | \
+            jq '. | length')
+          OPEN=$(gh issue list --label "day-task" \
+            --state open --limit 1000 --json number | \
+            jq '. | length')
+
+          FIRST=$(gh issue list --label "day-task" \
+            --state closed --limit 1 --json closedAt \
+            --jq '.[0].closedAt' | head -1)
+          LAST=$(gh issue list --label "day-task" \
+            --state closed --limit 1000 --json closedAt \
+            --jq '.[-1].closedAt' | tail -1)
+
+          cat > .github/stats/progress.json << JSONEOF
+          {
+            "updated": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "total_tasks": $TOTAL,
+            "completed": $CLOSED,
+            "remaining": $OPEN,
+            "percentage": $((CLOSED * 100 / TOTAL)),
+            "first_completed": "$FIRST",
+            "last_completed": "$LAST"
+          }
+          JSONEOF
+
+          echo "Stats updated!"
+          cat .github/stats/progress.json
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Commit Stats
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add .github/stats/
+          git diff --staged --quiet || \
+            git commit -m "Update learning stats"
+          git push || echo "No changes to push"
