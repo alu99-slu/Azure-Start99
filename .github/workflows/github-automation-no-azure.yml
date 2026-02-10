@@ -136,10 +136,17 @@ jobs:
           --jq 'length')
         
         # Create a new issue with the summary
+        WEEK_START=$(date -d '7 days ago' +%Y-%m-%d)
+        WEEK_END=$(date +%Y-%m-%d)
+        WEEK_NUM=$(date +%U)
+
         gh issue create \
-          --title "📊 Week $(date +%U) Summary" \
+          --title "📊 Week ${WEEK_NUM} Summary" \
           --label "summary" \
           --body "## Weekly Progress Report
+
+**Week of:** ${WEEK_START} to ${WEEK_END}
+
 
 **Week of:** $(date -d '7 days ago' +%Y-%m-%d) to $(date +%Y-%m-%d)
 
@@ -276,4 +283,5 @@ EOF
         
         git add .github/stats/
         git diff --staged --quiet || git commit -m "Update learning stats"
+
         git push || echo "No changes to push"
