@@ -1,0 +1,210 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                    SHELL COMMANDS QUICK REFERENCE                            ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ FILE PERMISSIONS (chmod)                                                     │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Read Permissions:        -rwxr-xr--
+                         │└┬┘└┬┘└┬┘
+Permission Bits:         │ │  │  └─ Others: r-- (4)
+                         │ │  └──── Group:  r-x (5)
+                         │ └─────── Owner:  rwx (7)
+                         └───────── Type: - file, d directory, l link
+
+Numeric Values:          r (read) = 4    w (write) = 2    x (execute) = 1
+
+Common Permissions:
+  chmod 755 file.sh      # rwxr-xr-x  - Executable scripts
+  chmod 644 file.txt     # rw-r--r--  - Regular files
+  chmod 600 secret.txt   # rw-------  - Private files
+  chmod 777 file         # rwxrwxrwx  - All permissions (avoid!)
+  chmod +x script.sh     # Add execute permission
+  chmod u+x script.sh    # Add execute for user only
+  chmod go-w file        # Remove write for group & others
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ FILE OWNERSHIP (chown/chgrp)                                                │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  chown user file               # Change owner
+  chown user:group file         # Change owner and group
+  chown -R user:group dir/      # Recursive
+  chgrp groupname file          # Change group only
+
+  whoami                        # Show current user
+  groups                        # Show your groups
+  id                            # Show user/group IDs
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ ESSENTIAL NAVIGATION                                                         │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  pwd                           # Print working directory
+  ls                            # List files
+  ls -la                        # List all (including hidden) with details
+  ls -lh                        # List with human-readable sizes
+  cd /path/to/dir               # Change directory
+  cd ~                          # Go home
+  cd -                          # Go to previous directory
+  cd ..                         # Go up one level
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ FILE OPERATIONS                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  touch file.txt                # Create empty file
+  mkdir dirname                 # Create directory
+  mkdir -p a/b/c                # Create nested directories
+  cp source dest                # Copy file
+  cp -r source dest             # Copy directory
+  mv old new                    # Move/rename
+  rm file                       # Remove file
+  rm -r dir                     # Remove directory
+  rm -rf dir                    # Force remove (dangerous!)
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ VIEWING FILES                                                                │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  cat file                      # Display entire file
+  less file                     # Page through file (q to quit)
+  head file                     # First 10 lines
+  head -n 20 file               # First 20 lines
+  tail file                     # Last 10 lines
+  tail -f file                  # Follow file (live updates)
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ SEARCHING                                                                    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  grep "pattern" file           # Search in file
+  grep -r "pattern" dir         # Search recursively
+  grep -i "pattern" file        # Case-insensitive search
+  find /path -name "*.txt"      # Find files by name
+  find /path -type f            # Find all files
+  find /path -type d            # Find all directories
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ BASH SCRIPT BASICS                                                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Script Header:
+  #!/bin/bash                   # Shebang - always first line
+
+Variables:
+  NAME="Alice"                  # Define (no spaces!)
+  echo $NAME                    # Use variable
+  echo ${NAME}                  # Use with braces (safer)
+  RESULT=$(command)             # Command substitution
+
+User Input:
+  read -p "Name: " USERNAME     # Prompt for input
+
+Conditionals:
+  if [ $AGE -gt 18 ]; then
+      echo "Adult"
+  elif [ $AGE -eq 18 ]; then
+      echo "Just 18"
+  else
+      echo "Minor"
+  fi
+
+Comparison Operators:
+  -eq   Equal                   -ne   Not equal
+  -gt   Greater than            -lt   Less than
+  -ge   Greater or equal        -le   Less or equal
+
+File Tests:
+  -f file    File exists        -d dir     Directory exists
+  -r file    Readable           -w file    Writable
+  -x file    Executable         -s file    Not empty
+
+Loops:
+  for i in 1 2 3 4 5; do
+      echo $i
+  done
+
+  while [ $count -lt 5 ]; do
+      echo $count
+      count=$((count + 1))
+  done
+
+Functions:
+  greet() {
+      echo "Hello, $1"          # $1 is first argument
+  }
+  greet "Alice"
+
+Special Variables:
+  $0      Script name           $1-$9   Arguments 1-9
+  $@      All arguments         $#      Number of arguments
+  $?      Exit code of last cmd $$      Process ID
+  $USER   Current username      $HOME   Home directory
+  $PWD    Current directory
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ REDIRECTION & PIPES                                                          │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  command > file                # Redirect output (overwrite)
+  command >> file               # Redirect output (append)
+  command 2> file               # Redirect errors
+  command &> file               # Redirect both output and errors
+  command1 | command2           # Pipe output to next command
+  command < file                # Use file as input
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ SYSTEM INFORMATION                                                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  whoami                        # Current username
+  hostname                      # Computer name
+  uname -a                      # System information
+  df -h                         # Disk space (human-readable)
+  du -sh dir                    # Directory size
+  free -h                       # Memory usage
+  top                           # Running processes (q to quit)
+  ps aux                        # All processes
+  date                          # Current date/time
+  uptime                        # System uptime
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ COMMON TASKS                                                                 │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Make script executable:
+  chmod +x script.sh
+  ./script.sh
+
+Run script:
+  bash script.sh                # Run with bash
+  ./script.sh                   # Run directly (needs +x)
+  
+Debug script:
+  bash -x script.sh             # Show each command as it runs
+  
+Count lines in file:
+  wc -l file.txt
+
+Find running processes:
+  ps aux | grep processname
+
+Check command exists:
+  command -v python             # Returns path if exists
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ PRO TIPS                                                                      ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+1. Always quote variables: "$VAR" not $VAR (handles spaces)
+2. Use meaningful variable names: USER_COUNT not uc
+3. Check exit codes: if [ $? -eq 0 ]; then (0 = success)
+4. Add comments to explain complex logic
+5. Test scripts in safe environment first
+6. Use 'set -e' to exit on errors
+7. Use 'shellcheck' to validate scripts
+8. Tab completion is your friend (press Tab to autocomplete)
+9. Use 'man command' to read manual pages
+10. Ctrl+C to cancel running command
