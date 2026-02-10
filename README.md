@@ -1,5 +1,5 @@
 ![Progress](https://img.shields.io/badge/Progress-0%25-red)
-  **Progress:** 0/0 tasks completed (0%)
+  **Progress:** 0/1 tasks completed (0%)
 
 This repository is a beginner-focused, fast‑path scaffold to learn Azure cloud engineering (Python sample app, Terraform skeleton, Dockerfile, Helm chart stub, GitHub Actions, and devcontainer). It also includes a script to create 84 "Day N" GitHub issues as a checklist and a calendar file (calendar.ics) with daily events.
 
