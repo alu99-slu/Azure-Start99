@@ -5,7 +5,7 @@
 #   bash scripts/create_issues.sh
 #
 # Requirements: gh (https://cli.github.com/), jq
-REPO="alu99-slus/Azure-Start99"
+REPO="alu99-slu/Azure-Start99"
 TASKS_FILE="task.md"
 
 if ! command -v gh >/dev/null 2>&1; then
