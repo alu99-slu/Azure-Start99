@@ -140,24 +140,25 @@ jobs:
         WEEK_END=$(date +%Y-%m-%d)
         WEEK_NUM=$(date +%U)
 
-        gh issue create \
-          --title "📊 Week ${WEEK_NUM} Summary" \
-          --label "summary" \
-          --body "## Weekly Progress Report
+       gh issue create \
+        --title "📊 Week ${WEEK_NUM} Summary" \
+        --label "summary" \
+        --body "$(cat <<EOF
+      ## Weekly Progress Report
 
-**Week of:** ${WEEK_START} to ${WEEK_END}
+      **Week of:** ${WEEK_START} to ${WEEK_END}
 
-# <<<<<<< HEAD
+      **Tasks Completed:** $CLOSED_THIS_WEEK
 
-# =======
-# >>>>>>> b60c177 (fm)
-**Week of:** $(date -d '7 days ago' +%Y-%m-%d) to $(date +%Y-%m-%d)
+      **Keep up the great work!** 🚀
 
-**Tasks Completed:** $CLOSED_THIS_WEEK
+      ---
+      *This is an automated weekly summary*
+      EOF
+      )"
 
-**Keep up the great work!** 🚀
 
----
+      ---
 *This is an automated weekly summary*"
       env:
         GH_TOKEN: ${{ github.token }}
@@ -173,7 +174,7 @@ jobs:
       run: |
         ISSUE_TITLE="${{ github.event.issue.title }}"
         ISSUE_NUMBER="${{ github.event.issue.number }}"
-        
+
         # Auto-add "day-task" label to Day X issues
         if [[ "$ISSUE_TITLE" =~ ^Day\ [0-9]+ ]]; then
           gh issue edit $ISSUE_NUMBER --add-label "day-task"
