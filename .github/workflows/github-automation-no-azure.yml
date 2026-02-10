@@ -173,6 +173,8 @@ jobs:
       run: |
         ISSUE_TITLE="${{ github.event.issue.title }}"
         ISSUE_NUMBER="${{ github.event.issue.number }}"
+
+        const START_DATE = new Date('2026-02-10');
         
         # Auto-add "day-task" label to Day X issues
         if [[ "$ISSUE_TITLE" =~ ^Day\ [0-9]+ ]]; then
