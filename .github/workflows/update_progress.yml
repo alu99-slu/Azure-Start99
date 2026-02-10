@@ -86,7 +86,7 @@ jobs:
       id: find-task
       run: |
         # Calculate which day we're on (starting from a specific date)
-        START_DATE="2026-02-02"
+        START_DATE="2026-02-10"
         TODAY=$(date +%Y-%m-%d)
         
         # Calculate days since start
