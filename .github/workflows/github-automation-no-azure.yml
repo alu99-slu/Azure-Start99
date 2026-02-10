@@ -147,7 +147,10 @@ jobs:
 
 **Week of:** ${WEEK_START} to ${WEEK_END}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b60c177 (fm)
 **Week of:** $(date -d '7 days ago' +%Y-%m-%d) to $(date +%Y-%m-%d)
 
 **Tasks Completed:** $CLOSED_THIS_WEEK
@@ -176,6 +179,7 @@ jobs:
           gh issue edit $ISSUE_NUMBER --add-label "day-task"
           echo "Added 'day-task' label"
         fi
+        const START_DATE = new Date('2026-02-10');  // Your Day 1 date
         
         # Add difficulty labels based on estimated time
         ISSUE_BODY="${{ github.event.issue.body }}"
