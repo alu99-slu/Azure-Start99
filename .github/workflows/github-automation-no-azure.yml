@@ -147,10 +147,10 @@ jobs:
 
 **Week of:** ${WEEK_START} to ${WEEK_END}
 
-<<<<<<< HEAD
+# <<<<<<< HEAD
 
-=======
->>>>>>> b60c177 (fm)
+# =======
+# >>>>>>> b60c177 (fm)
 **Week of:** $(date -d '7 days ago' +%Y-%m-%d) to $(date +%Y-%m-%d)
 
 **Tasks Completed:** $CLOSED_THIS_WEEK
@@ -173,8 +173,6 @@ jobs:
       run: |
         ISSUE_TITLE="${{ github.event.issue.title }}"
         ISSUE_NUMBER="${{ github.event.issue.number }}"
-
-        const START_DATE = new Date('2026-02-10');
         
         # Auto-add "day-task" label to Day X issues
         if [[ "$ISSUE_TITLE" =~ ^Day\ [0-9]+ ]]; then
