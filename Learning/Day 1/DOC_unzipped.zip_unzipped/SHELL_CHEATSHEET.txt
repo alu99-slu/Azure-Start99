@@ -203,7 +203,7 @@ Check command exists:
 3. Check exit codes: if [ $? -eq 0 ]; then (0 = success)
 4. Add comments to explain complex logic
 5. Test scripts in safe environment first
-6. Use 'set -e' to exit on errors
+6. Use 'set -e' to exit on errors 
 7. Use 'shellcheck' to validate scripts
 8. Tab completion is your friend (press Tab to autocomplete)
 9. Use 'man command' to read manual pages
