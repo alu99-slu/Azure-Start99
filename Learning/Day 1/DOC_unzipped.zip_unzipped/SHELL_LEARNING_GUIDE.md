@@ -242,6 +242,8 @@ echo '#!/bin/bash' > hello.sh
 echo 'echo "Hello!"' >> hello.sh
 chmod +x hello.sh
 ./hello.sh
+
+-----------------------------> Done
 ```
 
 ### Exercise 2: Simple System Info Script
@@ -251,6 +253,8 @@ Create a script that displays:
 - Date and time
 - Number of logged-in users
 - Disk usage
+
+-----------------------------> Done
 
 ### Exercise 3: Interactive Script
 Create a script that:
