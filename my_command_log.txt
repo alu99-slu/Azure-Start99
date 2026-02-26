@@ -59,3 +59,114 @@
 2026-02-25 19:53:57 -   814  git push -f origin main
 2026-02-25 19:54:06 -   815  git push
 2026-02-25 19:54:10 -   816  git status
+2026-02-25 19:54:22 -   817  git add .
+2026-02-25 20:01:12 -   818  cd Learning/Day_1/
+2026-02-25 20:01:20 -   819  ls -l test.html 
+2026-02-25 20:01:32 -   820  echo "test" > test.html 
+2026-02-25 20:01:57 -   821  chmod 755 test.html 
+2026-02-25 20:02:09 -   822  echo "yo" > test.html 
+2026-02-25 20:02:14 -   823  cat test.html 
+2026-02-25 20:02:24 -   824  ls -l test.html 
+2026-02-25 20:03:02 -   825  chmod 550 test.html 
+2026-02-25 20:03:07 -   826  cat test.html 
+2026-02-25 20:03:13 -   827  ls -l test.html 
+2026-02-25 20:03:52 -   828  chmod 666 test.html 
+2026-02-25 20:03:57 -   829  cat test.html 
+2026-02-25 20:04:02 -   830  ls -l test.html 
+2026-02-25 20:06:05 -   831  mv test.html test.sh
+2026-02-25 20:06:37 -   832  cat test.sh 
+2026-02-25 20:10:16 -   833  chmod 666 test.sh 
+2026-02-25 20:10:24 -   834  ls -l test.sh 
+2026-02-25 20:10:32 -   835  cat test.sh 
+2026-02-25 20:10:41 -   836  mv test.sh test.txt
+2026-02-25 20:10:47 -   837  cat test.txt 
+2026-02-25 20:11:30 -   838  chmod 444 test.txt 
+2026-02-25 20:11:37 -   839  cat test.txt 
+2026-02-25 20:11:44 -   840  ls -l test.txt 
+2026-02-25 20:12:46 -   841  mv test.txt test.sh
+2026-02-25 20:12:58 -   842  ls
+2026-02-25 20:13:08 -   843  ./test.sh
+2026-02-25 20:14:19 -   844  chmod 766 test.sh 
+2026-02-25 20:14:21 -   845  ./test.sh
+2026-02-25 20:14:36 -   846  cat test.sh 
+2026-02-26 04:12:32 -   846  cat test.sh 
+2026-02-26 04:12:51 -   846  cat test.sh 
+2026-02-26 04:16:04 -   847  cd Learning/
+2026-02-26 04:16:07 -   848  ls -la
+2026-02-26 04:16:13 -   849  mkdir Day_3
+2026-02-26 04:16:20 -   850  cd Day_3/
+2026-02-26 04:16:27 -   851  touch script.sh
+2026-02-26 04:20:26 -   852  ./script.sh
+2026-02-26 04:20:53 -   853  ls 
+2026-02-26 04:21:14 -   854  cat script.sh 
+2026-02-26 04:21:29 -   854  cat script.sh 
+2026-02-26 04:21:40 -   854  cat script.sh 
+2026-02-26 04:24:09 -   855  bash script.sh 
+2026-02-26 04:25:27 -   855  bash script.sh 
+2026-02-26 04:25:43 -   855  bash script.sh 
+2026-02-26 04:28:39 -   846  cat test.sh 
+2026-02-26 04:28:44 -   847  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:30:43 -   847  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:30:57 -   847  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:31:32 -   847  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:31:37 -   847  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:32:22 -   847  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:32:57 -   847  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:33:20 -   847  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:33:57 -   847  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:34:12 -   847  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:38:25 -   847  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:39:45 -   847  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:41:29 -   847  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:42:41 -   847  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:43:13 -   848  cd Learning/Day_3/
+2026-02-26 04:43:16 -   849  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:45:44 -   849  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:47:45 -   849  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:51:12 -   849  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:51:40 -   849  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:52:11 -   849  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:52:29 -   849  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:52:44 -   849  /bin/bash "/home/souvik99/Azure-Start99/Learning/Day_3/script.sh"
+2026-02-26 04:53:18 -   850  bash script.sh 
+2026-02-26 04:58:28 -   850  bash script.sh 
+2026-02-26 04:59:58 -   859  bash script.sh 
+2026-02-26 05:00:51 -   860  cd Learning/Day_3/
+2026-02-26 05:00:57 -   861  bash script.sh 
+2026-02-26 05:01:09 -   861  bash script.sh 
+2026-02-26 05:01:35 -   861  bash script.sh 
+2026-02-26 05:07:02 -   861  bash script.sh 
+2026-02-26 05:07:39 -   861  bash script.sh 
+2026-02-26 05:08:26 -   861  bash script.sh 
+2026-02-26 05:09:19 -   861  bash script.sh 
+2026-02-26 05:09:43 -   861  bash script.sh 
+2026-02-26 05:21:19 -   862  grep "count" test.txt 
+2026-02-26 05:21:31 -   863  grep "pattern" test.txt 
+2026-02-26 05:23:51 -   864  grep -i "count" test.txt 
+2026-02-26 05:27:42 -   865  cd ..
+2026-02-26 05:27:45 -   865  cd ..
+2026-02-26 05:27:46 -   865  cd ..
+2026-02-26 05:28:04 -   866  find /home -size +10M
+2026-02-26 05:28:19 -   867  cd Azure-Start99/Learning/Day_3/
+2026-02-26 05:28:23 -   868  find /home -size +10M
+2026-02-26 05:28:46 -   869  find . -mtime -1
+2026-02-26 05:29:48 -   870  find . -nmae ".text"
+2026-02-26 05:29:56 -   871  find . -nmae ".txt"
+2026-02-26 05:30:06 -   872  find . -name ".txt"
+2026-02-26 05:30:14 -   873  find . -name "*.txt"
+2026-02-26 05:30:25 -   874  find .
+2026-02-26 05:48:58 -   875  git status
+2026-02-26 05:49:01 -   876  git add .
+2026-02-26 05:49:14 -   877  git commit -m "network basics"
+2026-02-26 05:49:21 -   878  git push
+2026-02-26 05:49:30 -   879  git push origin main
+2026-02-26 05:51:26 -   881  git push origin main
+2026-02-26 05:54:34 -   881  git push origin main
+2026-02-26 05:54:50 -   882  git push origin main --force
+2026-02-26 05:55:00 -   883  git status
+2026-02-26 05:55:04 -   884  git add .
+2026-02-26 05:55:12 -   885  git commit -m "network basic"
+2026-02-26 05:55:22 -   886  git push origin main --force
+2026-02-26 05:55:32 -   887  git stats
+2026-02-26 05:55:35 -   888  git status
+2026-02-26 05:55:53 -   889  git commit -a

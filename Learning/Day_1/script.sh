@@ -147,5 +147,3 @@ arg(){
 }
 
 arg one two theree
-
-
