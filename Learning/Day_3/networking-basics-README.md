@@ -140,12 +140,12 @@ CLIENT                              SERVER
   |    Host: example.com               |
   |    User-Agent: curl/7.88           |
   |    Accept: */*                     |
-  |                                   |
+  |                                    |
   |<-- HTTP Response -----------------|
   |    HTTP/1.1 200 OK                 |
   |    Content-Type: text/html         |
   |    Content-Length: 1256            |
-  |                                   |
+  |                                    |
   |    <html>...</html>                |
 ```
 
