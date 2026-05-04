@@ -9,7 +9,8 @@
 
 1. [Hybrid Infrastructure](#1-hybrid-infrastructure)
    - [Hybrid Cloud Architecture (AWS)](#11-hybrid-cloud-architecture-aws)
-   - [Multi-Cloud Strategy (GCP)](#12-multi-cloud-strategy-gcp)
+   - [Hybrid Cloud Architecture (Azure)](#12-hybrid-cloud-architecture-azure)
+   - [Multi-Cloud Strategy (GCP)](#13-multi-cloud-strategy-gcp)
 2. [On-Premises: VMs & Bare Metal](#2-on-premises-vms--bare-metal)
    - [VirtualBox](#21-virtualbox)
    - [VMware](#22-vmware)
@@ -104,7 +105,456 @@ Pure on-premises is expensive and inflexible. Pure cloud raises data sovereignty
 
 ---
 
-### 1.2 Multi-Cloud Strategy (GCP)
+### 1.2 Hybrid Cloud Architecture (Azure)
+
+#### What is it?
+
+Azure hybrid cloud architecture combines your **on-premises infrastructure** with **Microsoft Azure** public cloud resources. Microsoft has invested more deeply in hybrid scenarios than any other cloud provider — largely because its enterprise customers run massive Windows Server, SQL Server, and Active Directory estates on-premises and need a smooth path to cloud without ripping everything out.
+
+The Azure hybrid story is built on one key platform: **Azure Arc**. While AWS hybrid is largely about connectivity (Direct Connect, VPN, Outposts), Azure goes further by letting you *manage* on-prem and multi-cloud resources as if they were Azure resources — same portal, same policies, same monitoring.
+
+#### Why Azure Hybrid is Different from AWS Hybrid
+
+| Aspect | AWS Hybrid | Azure Hybrid |
+|---|---|---|
+| **Primary strength** | Connectivity (Direct Connect, VPN) + Outposts hardware | Management plane (Arc) — manage anything from Azure |
+| **Identity** | AWS IAM (separate from on-prem AD) | Azure AD / Entra ID natively extends on-prem Active Directory |
+| **Flagship tool** | AWS Outposts (physical AWS hardware on-prem) | Azure Arc (extend Azure management everywhere) |
+| **SQL Server story** | RDS (managed service, new deployment) | Azure SQL Managed Instance, Arc-enabled SQL Server |
+| **Windows workloads** | Good support | Best support — Microsoft owns Windows |
+| **Pricing benefit** | None specifically | Azure Hybrid Benefit — reuse existing licenses |
+
+#### Azure Hybrid Tools You Must Know
+
+| Azure Service | What it does | Where it fits |
+|---|---|---|
+| **Azure Arc** | Extend Azure management, governance, and security to any infrastructure — on-prem servers, Kubernetes clusters, SQL servers, even VMs on AWS or GCP | The central hub of all Azure hybrid |
+| **Azure ExpressRoute** | Private dedicated fibre connection from your datacentre to Azure — NOT over the public internet. Like AWS Direct Connect. | High-bandwidth, low-latency, mission-critical connectivity |
+| **Azure VPN Gateway** | Encrypted Site-to-Site VPN tunnel over the internet between on-prem and Azure VNet | Lower-cost connectivity for lower-throughput workloads |
+| **Azure Stack Hub** | Full Azure software stack running on your own hardware in your datacentre | Disconnected/air-gapped environments, data sovereignty |
+| **Azure Stack HCI** | Hyperconverged infrastructure for running VMs and containers on-prem, managed from Azure | Modernise on-prem datacentre without full cloud migration |
+| **Azure Stack Edge** | Azure-managed edge computing device — a physical appliance Microsoft ships to you | AI/ML inference at the edge, remote/branch offices |
+| **Azure AD Connect / Entra Connect** | Syncs on-premises Active Directory users and groups to Azure AD | Unified identity — users log in once for on-prem and cloud |
+| **Azure File Sync** | Sync on-premises Windows file servers to Azure Files — cloud becomes a tier of your file server | Centralise file storage, keep local cache for performance |
+| **Azure Migrate** | Assess and migrate on-premises VMs, databases, and web apps to Azure | Discovery, assessment, migration planning |
+| **Azure Site Recovery (ASR)** | Disaster recovery — replicate on-prem VMs to Azure and fail over if your datacentre goes down | Business continuity, DR |
+
+#### Azure ExpressRoute — Deep Dive
+
+ExpressRoute is Azure's private connectivity service. Your traffic never touches the public internet — it travels on dedicated circuits through a connectivity provider (like AT&T, Equinix, or BT).
+
+```
+Your On-Premises Datacentre
+        |
+        | Private circuit (via connectivity provider)
+        | (e.g. Equinix co-location facility)
+        |
+[ExpressRoute Circuit]
+        |
+        | Microsoft Enterprise Edge (MSEE) routers
+        |
+[Azure Virtual Network (VNet)]
+        |
+    Azure resources (VMs, databases, storage)
+```
+
+**ExpressRoute tiers:**
+
+| Tier | Bandwidth | Use case |
+|---|---|---|
+| ExpressRoute Local | Up to 10 Gbps | Connect to a single Azure region near your datacentre |
+| ExpressRoute Standard | Up to 10 Gbps | Connect to Azure regions in your geopolitical area |
+| ExpressRoute Premium | Up to 100 Gbps | Global connectivity across all Azure regions |
+
+**ExpressRoute vs VPN Gateway:**
+
+| | ExpressRoute | VPN Gateway |
+|---|---|---|
+| Path | Private circuit (not internet) | Encrypted tunnel over internet |
+| Bandwidth | Up to 100 Gbps | Up to 10 Gbps |
+| Latency | Consistent, low | Variable (internet) |
+| Reliability | Higher (dedicated circuit) | Lower (internet dependency) |
+| Cost | Higher (circuit rental fees) | Lower |
+| SLA | 99.95% | 99.9% |
+| Setup time | Weeks (circuit provisioning) | Minutes |
+
+#### Azure Arc — The Management Revolution
+
+Azure Arc is what makes Azure hybrid truly unique. It lets you project non-Azure resources into Azure Resource Manager — so you manage everything from the Azure portal with the same tools, policies, and RBAC you use for native Azure resources.
+
+**What Azure Arc can manage:**
+
+```
+Azure Arc
+├── Arc-enabled Servers
+│   ├── On-premises Windows Server VMs (VMware, Hyper-V)
+│   ├── On-premises Linux servers (bare metal or VMs)
+│   ├── AWS EC2 instances
+│   └── GCP Compute Engine instances
+│
+├── Arc-enabled Kubernetes
+│   ├── On-premises Kubernetes (kubeadm, k3s, etc.)
+│   ├── AWS EKS clusters
+│   ├── GCP GKE clusters
+│   └── Azure Stack HCI clusters
+│
+├── Arc-enabled SQL Server
+│   ├── SQL Server on on-prem VMs
+│   └── SQL Server on any cloud VM
+│
+└── Arc-enabled Data Services
+    ├── Azure SQL Managed Instance (runs on-prem via Arc)
+    └── PostgreSQL (Arc-enabled)
+```
+
+**What you get for Arc-managed servers:**
+
+- **Azure Policy:** Apply compliance rules (e.g. "all servers must have antivirus") across on-prem and cloud uniformly
+- **Microsoft Defender for Cloud:** Security posture management and threat detection for on-prem servers
+- **Azure Monitor:** Collect logs and metrics from on-prem servers into Azure Monitor — one dashboard for everything
+- **Update Management:** Schedule OS patches for both Azure VMs and on-prem servers from one place
+- **RBAC:** Use Azure role-based access control to manage who can access on-prem servers
+- **Inventory:** See all your servers (anywhere) in one Azure Resource Graph query
+
+**Installing Arc agent on an on-prem server:**
+
+```bash
+# On your on-prem Linux server:
+# Download and run the Arc onboarding script (generated from Azure portal)
+
+# 1. In Azure Portal → Azure Arc → Servers → Add
+# 2. Choose "Add a single server"
+# 3. Generate the onboarding script
+# 4. Run on your server:
+
+curl -o /tmp/OnboardingScript.sh \
+  "https://aka.ms/azcmagent-linux"
+
+bash /tmp/OnboardingScript.sh
+
+# Connect to Azure Arc
+azcmagent connect \
+  --resource-group "hybrid-rg" \
+  --tenant-id "your-tenant-id" \
+  --location "eastus" \
+  --subscription-id "your-subscription-id"
+
+# Verify
+azcmagent show
+```
+
+After this, your on-prem server appears in the Azure Portal under Azure Arc → Servers. You can run Azure Policy on it, monitor it with Azure Monitor, and manage it with RBAC — exactly like a native Azure VM.
+
+#### Azure Stack — Running Azure On-Premises
+
+**Azure Stack Hub:**
+
+A complete Azure environment running in your own datacentre. You buy validated hardware from OEM partners (Dell, HPE, Lenovo), Microsoft ships the Azure Stack Hub software, and you run a mini-Azure in your building.
+
+- Same Azure portal, same APIs, same services as public Azure
+- Suitable for disconnected/air-gapped environments (military, submarines, remote sites)
+- Data never leaves your datacentre
+- Limitation: Only a subset of Azure services available
+
+**Azure Stack HCI:**
+
+Hyperconverged infrastructure — compute and storage in the same cluster of physical servers, managed from Azure. Runs your VMs and containers on-prem but with Azure management, billing, and support.
+
+```
+Azure Stack HCI Cluster (your datacentre)
+├── Node 1: HPE ProLiant DL380 (16 cores, 256GB RAM, 2TB NVMe)
+├── Node 2: HPE ProLiant DL380 (16 cores, 256GB RAM, 2TB NVMe)
+└── Node 3: HPE ProLiant DL380 (16 cores, 256GB RAM, 2TB NVMe)
+    ↕ (managed from Azure portal via Arc)
+Azure Portal
+├── VM management (create, resize, snapshot)
+├── Azure Monitor (performance, logs)
+├── Microsoft Defender (security)
+└── Azure Update Manager (OS patches)
+```
+
+#### Azure AD Connect / Microsoft Entra Connect — Unified Identity
+
+One of the most important hybrid components. Your employees have Active Directory accounts on-premises (used to log into Windows PCs, file shares, on-prem apps). Azure AD Connect syncs those identities to Azure AD.
+
+```
+On-Premises Active Directory
+├── User: john.doe@company.local
+├── User: jane.smith@company.local
+└── Group: Finance-Team
+        |
+        | Azure AD Connect (sync engine, runs on a Windows Server)
+        | Syncs: users, groups, password hashes (or just identity for SSO)
+        ↓
+Azure Active Directory / Microsoft Entra ID
+├── User: john.doe@company.com  ← Same user, cloud identity
+├── User: jane.smith@company.com
+└── Group: Finance-Team
+        |
+        ↓ Single Sign-On
+Microsoft 365, Azure Portal, Salesforce, GitHub, any SAML/OIDC app
+```
+
+**Authentication modes:**
+
+| Mode | How it works | Password stored in cloud? |
+|---|---|---|
+| **Password Hash Sync (PHS)** | Hash of password hash synced to Azure AD. Auth happens in cloud. | Yes (hash of hash) |
+| **Pass-through Authentication (PTA)** | Azure AD passes auth request to on-prem AD agent. Auth happens on-prem. | No |
+| **Federation (ADFS)** | Dedicated federation server handles auth. Azure AD trusts it. | No |
+
+Most organisations use Password Hash Sync — simplest, most resilient (works even if on-prem is down).
+
+#### Architecture Pattern: Azure Hybrid Enterprise
+
+```
+[Users — anywhere]
+        |
+        | HTTPS (Azure AD authentication)
+        ↓
+[Azure AD / Entra ID] ←—sync—— [On-prem Active Directory]
+        |
+        | Authenticated session
+        ↓
+[Azure Application Gateway + WAF] — public entry point
+        |
+[Azure App Service] — web/API tier (PaaS, in Azure)
+        |
+        | ExpressRoute private circuit
+        ↓
+[On-Premises SQL Server] — data stays on-prem (compliance)
+[On-Premises File Server] ←—sync—— [Azure File Sync → Azure Files]
+
+Managed by Azure Arc:
+[On-prem servers] → same Azure Monitor, Defender, Policy as Azure VMs
+```
+
+#### Azure Hybrid Benefit — Significant Cost Saving
+
+A purely Azure-specific financial advantage. If your organisation has existing **Windows Server** or **SQL Server** licences with Software Assurance (SA), you can bring those licences to Azure and pay significantly reduced rates.
+
+| Scenario | Without Hybrid Benefit | With Hybrid Benefit | Saving |
+|---|---|---|---|
+| Windows Server VM (D4s v3) | ~$280/month | ~$170/month | ~40% |
+| SQL Server on VM (Standard) | ~$900/month | ~$450/month | ~50% |
+| Azure SQL Managed Instance | Full price | Up to 40% off | ~40% |
+
+This is a major reason enterprises choose Azure for lift-and-shift migrations of Windows/SQL workloads — they don't pay for licences they already own.
+
+#### Comparing AWS vs Azure Hybrid — Side by Side
+
+| Scenario | AWS Solution | Azure Solution |
+|---|---|---|
+| Private dedicated connection | AWS Direct Connect | Azure ExpressRoute |
+| Site-to-site VPN | AWS Site-to-Site VPN | Azure VPN Gateway |
+| Cloud hardware on-prem | AWS Outposts | Azure Stack Hub / HCI |
+| Unified management of on-prem + cloud | AWS Systems Manager | Azure Arc |
+| Edge computing | AWS Snowball Edge | Azure Stack Edge |
+| Disaster recovery to cloud | AWS CloudEndure | Azure Site Recovery |
+| Identity sync | AWS Directory Service | Azure AD Connect / Entra Connect |
+| On-prem file storage + cloud tier | AWS Storage Gateway | Azure File Sync |
+| Migration assessment | AWS Migration Hub | Azure Migrate |
+| Reuse existing licences | No equivalent | Azure Hybrid Benefit |
+
+#### Practical: Simulate Azure Hybrid Locally with Vagrant
+
+Just as you can simulate AWS hybrid with on-prem VMs + VPN, you can simulate Azure hybrid locally:
+
+```ruby
+# Vagrantfile — Simulates on-prem server + "Azure" app server
+
+Vagrant.configure("2") do |config|
+
+  # Simulates your on-prem server (managed by Azure Arc in real life)
+  config.vm.define "onprem" do |s|
+    s.vm.box = "ubuntu/jammy64"
+    s.vm.hostname = "onprem-server"
+    s.vm.network "private_network", ip: "192.168.56.200"
+    s.vm.provider "virtualbox" do |vb|
+      vb.memory = 1024; vb.cpus = 1
+    end
+    s.vm.provision "shell", inline: <<-SHELL
+      apt-get update -y
+      apt-get install -y docker.io
+      systemctl start docker
+      # Simulated on-prem database
+      docker run -d --name sqlserver \
+        -e ACCEPT_EULA=Y \
+        -e SA_PASSWORD=DevPassword123! \
+        -p 1433:1433 \
+        mcr.microsoft.com/mssql/server:2022-latest
+      echo "On-prem SQL Server running at 192.168.56.200:1433"
+    SHELL
+  end
+
+  # Simulates the Azure App Service (cloud side)
+  config.vm.define "azure-app" do |s|
+    s.vm.box = "ubuntu/jammy64"
+    s.vm.hostname = "azure-app-service"
+    s.vm.network "private_network", ip: "192.168.56.201"
+    s.vm.network "forwarded_port", guest: 8080, host: 8080
+    s.vm.provider "virtualbox" do |vb|
+      vb.memory = 1024; vb.cpus = 1
+    end
+    s.vm.provision "shell", inline: <<-SHELL
+      apt-get update -y
+      apt-get install -y docker.io
+      systemctl start docker
+      # App connects back to on-prem SQL Server (192.168.56.200)
+      docker run -d -p 8080:80 nginx
+      echo "Azure App Service simulation running at localhost:8080"
+      echo "App would connect to on-prem DB at 192.168.56.200:1433"
+    SHELL
+  end
+
+end
+```
+
+```bash
+vagrant up
+# Test connectivity between "cloud" and "on-prem":
+vagrant ssh azure-app
+ping 192.168.56.200         # Can the "cloud" app reach "on-prem" DB?
+nc -zv 192.168.56.200 1433  # Can it reach the SQL port?
+exit
+```
+
+This demonstrates the core challenge of hybrid: the cloud app needs to reach the on-prem database across a network boundary — which in real life is solved by ExpressRoute or VPN Gateway.
+
+#### Terraform for Azure Hybrid
+
+```hcl
+# Provision Azure hybrid connectivity with Terraform
+
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 3.0"
+    }
+  }
+}
+
+provider "azurerm" {
+  features {}
+}
+
+# Resource Group
+resource "azurerm_resource_group" "hybrid" {
+  name     = "hybrid-infrastructure-rg"
+  location = "East US"
+}
+
+# Virtual Network (equivalent of AWS VPC)
+resource "azurerm_virtual_network" "main" {
+  name                = "hybrid-vnet"
+  resource_group_name = azurerm_resource_group.hybrid.name
+  location            = azurerm_resource_group.hybrid.location
+  address_space       = ["10.0.0.0/16"]
+}
+
+# Gateway Subnet — required for VPN/ExpressRoute gateways
+resource "azurerm_subnet" "gateway" {
+  name                 = "GatewaySubnet"   # MUST be named exactly this
+  resource_group_name  = azurerm_resource_group.hybrid.name
+  virtual_network_name = azurerm_virtual_network.main.name
+  address_prefixes     = ["10.0.255.0/27"]
+}
+
+# App subnet
+resource "azurerm_subnet" "app" {
+  name                 = "app-subnet"
+  resource_group_name  = azurerm_resource_group.hybrid.name
+  virtual_network_name = azurerm_virtual_network.main.name
+  address_prefixes     = ["10.0.1.0/24"]
+}
+
+# Data subnet
+resource "azurerm_subnet" "data" {
+  name                 = "data-subnet"
+  resource_group_name  = azurerm_resource_group.hybrid.name
+  virtual_network_name = azurerm_virtual_network.main.name
+  address_prefixes     = ["10.0.2.0/24"]
+}
+
+# Public IP for VPN Gateway
+resource "azurerm_public_ip" "vpn" {
+  name                = "vpn-gateway-pip"
+  resource_group_name = azurerm_resource_group.hybrid.name
+  location            = azurerm_resource_group.hybrid.location
+  allocation_method   = "Static"
+  sku                 = "Standard"
+}
+
+# VPN Gateway — connects on-prem to Azure
+resource "azurerm_virtual_network_gateway" "vpn" {
+  name                = "hybrid-vpn-gateway"
+  resource_group_name = azurerm_resource_group.hybrid.name
+  location            = azurerm_resource_group.hybrid.location
+  type                = "Vpn"
+  vpn_type            = "RouteBased"
+  sku                 = "VpnGw1"
+  active_active       = false
+  enable_bgp          = true
+
+  ip_configuration {
+    name                          = "vnetGatewayConfig"
+    public_ip_address_id          = azurerm_public_ip.vpn.id
+    private_ip_address_allocation = "Dynamic"
+    subnet_id                     = azurerm_subnet.gateway.id
+  }
+}
+
+# Local Network Gateway — represents your on-prem network
+resource "azurerm_local_network_gateway" "onprem" {
+  name                = "onprem-local-gateway"
+  resource_group_name = azurerm_resource_group.hybrid.name
+  location            = azurerm_resource_group.hybrid.location
+  gateway_address     = "203.0.113.10"    # Your on-prem public IP
+  address_space       = ["192.168.0.0/16"] # Your on-prem IP range
+}
+
+# VPN Connection — the actual tunnel
+resource "azurerm_virtual_network_gateway_connection" "onprem" {
+  name                       = "onprem-to-azure"
+  resource_group_name        = azurerm_resource_group.hybrid.name
+  location                   = azurerm_resource_group.hybrid.location
+  type                       = "IPsec"
+  virtual_network_gateway_id = azurerm_virtual_network_gateway.vpn.id
+  local_network_gateway_id   = azurerm_local_network_gateway.onprem.id
+  shared_key                 = "SuperSecurePreSharedKey123!"
+}
+
+# Azure Arc — onboard on-prem server (resource placeholder in Azure)
+resource "azurerm_resource_group" "arc" {
+  name     = "arc-servers-rg"
+  location = "East US"
+}
+
+# Output gateway IP (needed to configure on-prem VPN device)
+output "vpn_gateway_public_ip" {
+  value       = azurerm_public_ip.vpn.ip_address
+  description = "Configure this IP on your on-prem VPN device"
+}
+
+output "azure_vnet_cidr" {
+  value       = azurerm_virtual_network.main.address_space
+  description = "Azure VNet address space — add to on-prem routing table"
+}
+```
+
+#### Integration
+
+- **With Terraform:** The `azurerm` provider manages everything — VNets, VPN gateways, ExpressRoute circuits, Arc resources. Terraform is the right tool to version-control and automate Azure hybrid infrastructure.
+- **With Docker/Kubernetes:** Azure Arc-enabled Kubernetes lets you deploy containerised apps to on-prem Kubernetes clusters from Azure — using `kubectl` against Arc or Azure GitOps (Flux). Your Docker images push to Azure Container Registry (ACR) and deploy to both Azure AKS and on-prem Arc-enabled K8s.
+- **With VirtualBox/Vagrant:** Your Vagrant-managed VMs represent the on-prem side. In a real scenario, you'd install the Azure Arc agent on those VMs to bring them under Azure management. The Vagrant multi-machine setup mirrors the on-prem side of a real Azure hybrid deployment.
+- **With Networking:** ExpressRoute and VPN Gateway are purely network constructs — BGP routing, CIDR ranges, route tables. Everything from the subnetting and TCP/IP sections applies directly when configuring hybrid connectivity.
+- **With Azure Fundamentals (AZ-900):** Azure hybrid is a significant part of the AZ-900 exam. Understanding Arc, ExpressRoute, VPN Gateway, Azure AD Connect, Azure Site Recovery, and Azure Migrate directly maps to exam domains.
+- **With AWS Hybrid:** The two approaches are complementary knowledge. AWS hybrid = great for net-new cloud workloads with some on-prem connectivity. Azure hybrid = great for enterprises with existing Microsoft investments wanting unified management. Real-world multi-cloud hybrid environments often use both.
+
+---
+
+### 1.3 Multi-Cloud Strategy (GCP)
 
 #### What is it?
 
